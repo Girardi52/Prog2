@@ -1,28 +1,36 @@
-# include <iostream>
-/*
+#include <iostream>
+#include <vector>
+#include <format>
 
-*/
 
-void processarDados () {
-    int * dadosImportantes = new int (100) ; // esse foi um erro em que a memoria não foi liberada 
-    int * valorTemporario = new int (42) ;
-    //delete valorTemporario ;
-    std :: cout << " Valor ( apos delete ) : " << * valorTemporario << std::endl;
-    delete valorTemporario; // colocando após o print pra o concerto
-    delete dadosImportantes;
-        // nessa linha de código o erro está em printar o ponteiro depois de liberar a memoria
-        //endl ;
-    int * ptrOriginal = new int (99) ;
-    int * ptrCopia = ptrOriginal ;
-    //delete ptrOriginal ;
-    delete ptrCopia ;  // aqui ele está liberando a memória duas vezes
+int main()
+{
+    std::vector<int>leiturastemp;
+
+
+    leiturastemp.push_back(65);
+    leiturastemp.push_back(70);
+    leiturastemp.push_back(72);
+    
+    
+    
+    std::cout << "O tamanho do Seu vetor eh\n" << leiturastemp.size() << std::endl;
+
+    
+    std::cout<< "Falha no Sistema\n  ";
+    leiturastemp.push_back(85);
+
+
+    // imprima o valor da ultima leitur
+    std::cout << "O seu ultimo valor é" << leiturastemp.back() << std::endl;
+    leiturastemp.pop_back();
+    std::cout << "Ultimo valor Removido com Sucesso!!\n ";
+
+    for (int i : leiturastemp){
+        std::cout<< i << std::endl;
     }
-
-    int main () {
-    processarDados () ;
-    std :: cout << " Programa concluiu . " << std :: endl ;
     return 0;
-}
 
+}
 
 

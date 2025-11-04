@@ -1,35 +1,30 @@
-# include <iostream>
-# include <string>
-# include <vector>
-# include <memory>
-int main () {
-    auto documento = std :: make_shared < std :: string >( " Conteudo Secreto " ) ;
-    std :: cout << " Doc criado . Refs : " << documento . use_count () << std ::
-    endl ;
-    std :: vector < std :: shared_ptr < std :: string > > usuarios ;
-    std :: cout << " \n - - - Adicionando usuarios ---" << std :: endl ;
+#include <iostream>
+#include <array>
+#include <algorithm>
+
+
+int main(){
+    std::array<int,6> pontuacoes{2,4,5,7,8,610};
+
     
-    
-    // TODO : Adicione o ’ documento ’ 3 vezes ao vetor ’ usuarios ’
-    for ( int i= 0; i<3; i++)
-    {
-        usuarios.push_back(documento);    
-        // A cada adicao , imprima a contagem de referencias .
-        documento.use_count();
+    int pontuacaoalvo{610};
+
+    // entre parenteses você está indicando que é uma função
+
+    std::sort(std::begin(pontuacoes) , std::end(pontuacoes) );
+
+    for ( int i : pontuacoes ){
+        std::cout << "Seu Valor nesse indice e\n"<< i << std::endl;
     }
+
+
+    bool found = std::binary_search(std::begin(pontuacoes), std::end(pontuacoes), pontuacaoalvo);
     
-    
-    std :: cout << " \n - - - Removendo usuarios ---" << std :: endl ;
-    
-    
-    // TODO : Enquanto o vetor ’ usuarios ’ nao estiver vazio , remova
-    for ( int i = 0; i<3; i++)
-    {
-        usuarios.at(i).reset();
-    }    
-    
-    // o ultimo elemento e imprima a contagem de referencias
-     .
-    std :: cout << " \ nUltima ref . prestes a sair do escopo . " << std :: endl ;
+    if (found == true){
+        std::cout<< "Seu alvo foi Alcançado: " << std::endl;
+
+    }else {
+        std::cout<< "Seu alvo Não foi Encontrado" << std::endl;
+    } 
     return 0;
 }
